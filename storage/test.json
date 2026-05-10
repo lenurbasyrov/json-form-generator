@@ -1,0 +1,12 @@
+{
+  "formTitle": "Kunden-Feedback",
+  "submittedAt": "2026-05-07T12:30:00",
+  "values": {
+    "Name": "Lenur Basyrov",
+    "Alter": 25,
+    "Kategorie": "Support",
+    "Newsletter": true,
+    "Geburtsdatum": "2000-01-15",
+    "Kommentar": "Alles funktioniert."
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "formTitle": "Kunden-Feedback",
+    "fields": [
+        {
+            "id": "name",
+            "label": "Name",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "age",
+            "label": "Alter",
+            "controlType": "spinner",
+            "dataType": "int",
+            "required": false
+        },
+        {
+            "id": "category",
+            "label": "Kategorie",
+            "controlType": "dropdown",
+            "dataType": "enum",
+            "required": true,
+            "options": [
+                "Support",
+                "Vertrieb",
+                "Allgemein"
+            ]
+        },
+        {
+            "id": "newsletter",
+            "label": "Newsletter",
+            "controlType": "checkbox",
+            "dataType": "boolean",
+            "required": false
+        },
+        {
+            "id": "birthday",
+            "label": "Geburtsdatum",
+            "controlType": "datefield",
+            "dataType": "date",
+            "required": false
+        },
+        {
+            "id": "comment",
+            "label": "Kommentar",
+            "controlType": "textarea",
+            "dataType": "string",
+            "required": false
+        }
+    ]
+}
