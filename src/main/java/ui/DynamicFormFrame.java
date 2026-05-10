@@ -1,9 +1,8 @@
-package main.java.ui;
+package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Label;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -19,15 +18,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 
-import main.java.factory.FieldComponentFactory;
-import main.java.model.FormField;
-import main.java.service.FormJsonService;
-import main.java.service.ResultJsonService;
-import main.java.validation.FieldValidator;
+import factory.FieldComponentFactory;
+import model.FormDefinition;
+import model.FormField;
+import service.FormJsonService;
+import service.ResultJsonService;
+import validation.FieldValidator;
 
 public class DynamicFormFrame extends JFrame {
     private final JLabel titleLabel = new JLabel("Kein Formular geladen", SwingConstants.CENTER);
@@ -55,7 +53,7 @@ public class DynamicFormFrame extends JFrame {
 
     private JPanel buildTopBar() {
         JPanel root = new JPanel(new BorderLayout());
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10,10, 10));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         root.add(titleLabel, BorderLayout.CENTER);
 
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -63,16 +61,27 @@ public class DynamicFormFrame extends JFrame {
         JButton loadRes = new JButton("Ergebnis laden");
         JButton saveRes = new JButton("Ergebnis speichern");
 
-        loadDef.addActionListener(e -> );
+        loadDef.addActionListener(e -> loadDefinition());
+        loadRes.addActionListener(e -> loadResult());
+        saveRes.addActionListener(e -> saveResult());
+
+        buttons.add(loadDef);
+        buttons.add(loadRes);
+        buttons.add(saveRes);
+
+        root.add(buttons, BorderLayout.SOUTH);
+        return root;
     }
 
+    // Öffnet einen Datei-Dialog, um eine JSON-Formulardefinition zu laden, und
+    // rendert das Formular.
     private void loadDefinition() {
         JFileChooser chooser = new JFileChooser();
         if (chooser.showOpenDialog(this) != JFileChooser.APPROVE_OPTION)
             return;
 
         try {
-            currentDefinition = formJsonService.loadDefenition(chooser.getSelectedFile().toPath());
+            currentDefinition = formJsonService.loadDefinition(chooser.getSelectedFile().toPath());
             renderForm(currentDefinition);
         } catch (Exception e) {
             error(e.getMessage());
@@ -88,10 +97,10 @@ public class DynamicFormFrame extends JFrame {
         if (definition.getFields() != null) {
             for (FormField field : definition.getFields()) {
                 JPanel row = new JPanel(new BorderLayout(8, 8));
-                row.setBorder(BorderFactory.createEmptyBorder(8,12,8,12));
+                row.setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
 
-                JLabel label new JLabel(field.getLabel() + (field.isRequired() ? "*" : ""));
-                label.setPreferredSize(new Dimension(240,28));
+                JLabel label = new JLabel(field.getLabel() + (field.isRequired() ? "*" : ""));
+                label.setPreferredSize(new Dimension(240, 28));
 
                 FieldComponentBinding binding = componentFactory.create(field);
                 bindings.add(binding);
@@ -106,6 +115,8 @@ public class DynamicFormFrame extends JFrame {
         formPanel.repaint();
     }
 
+    // Validiert die Eingaben und speichert die übermittelten Werte in einer
+    // JSON-Datei.
     private void saveResult() {
         if (currentDefinition == null) {
             error("Bitte zuerst eine Formular-Definition laden.");
@@ -137,6 +148,8 @@ public class DynamicFormFrame extends JFrame {
         }
     }
 
+    // Öffnet einen Datei-Dialog, um eine JSON-Ergebnisdatei zu laden, und füllt die
+    // Formularfelder mit den geladenen Werten.
     private void loadResult() {
         if (currentDefinition == null) {
             error("Bitte zuerst eine Formular-Definition laden.");
@@ -159,6 +172,7 @@ public class DynamicFormFrame extends JFrame {
         }
     }
 
+    // Zeigt eine Fehlermeldung in einem Dialog an.
     private void error(String msg) {
         JOptionPane.showMessageDialog(this, msg, "Fehler", JOptionPane.ERROR_MESSAGE);
     }
