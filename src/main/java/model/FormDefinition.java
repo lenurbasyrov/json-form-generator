@@ -1,6 +1,8 @@
-public package main.java.model;
+package model;
 
-class FormDefinition {
+import java.util.List;
+
+public class FormDefinition {
     private String formTitle;
     private List<FormField> fields;
 

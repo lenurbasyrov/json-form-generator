@@ -1,9 +1,9 @@
-package main.java.validation;
+package validation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import main.java.model.FormField;
+import model.FormField;
 
 public interface FieldValidator {
     String validate(FormField field, Object value);

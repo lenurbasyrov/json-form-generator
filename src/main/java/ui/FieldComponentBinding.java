@@ -1,4 +1,4 @@
-package main.java.ui;
+package ui;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import java.time.LocalDate;
 import java.util.Map;
 
-import main.java.model.FormField;
+import model.FormField;
 
 public class FieldComponentBinding {
     private final FormField field;
@@ -54,7 +54,7 @@ public class FieldComponentBinding {
 
     // Versucht, den Rohwert in den erwarteten Datentyp zu konvertieren. Bei Fehlern
     // wird der Rohwert zurückgegeben, damit die Validierung es abfangen kann.
-    public Object getConvertValue() {
+    public Object getConvertedValue() {
         Object rawValue = getRawValue();
         if (rawValue == null)
             return null;

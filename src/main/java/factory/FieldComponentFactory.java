@@ -1,21 +1,23 @@
-package main.java.factory;
+package factory;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-import main.java.model.FormField;
-import main.java.ui.FieldComponentBinding;
+import model.FormField;
+import ui.FieldComponentBinding;
 
 public class FieldComponentFactory {
     public FieldComponentBinding create (FormField field) {
         String type = field.getControlType() == null ? "textfield" : field.getControlType().toLowerCase();
         JComponent component;
 
+        // Je nach Typ des Formularfelds wird die entsprechende Swing-Komponente erstellt
         switch (type) {
             case "textarea" -> {
                 JTextArea tArea = new JTextArea(4, 24);
