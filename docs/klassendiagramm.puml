@@ -1,0 +1,109 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam ArrowColor #2F4F4F
+skinparam ClassBorderColor #4A4A4A
+skinparam ClassBackgroundColor #F9F9F6
+skinparam FontName Arial
+
+package "model" {
+    class FormDefinition {
+        - formTitle: String
+        - fields: List<FormField>
+        + getFormTitle(): String
+        + setFormTitle(formTitle: String): void
+        + getFields(): List<FormField>
+        + setFields(fields: List<FormField>): void
+    }
+
+    class FormField {
+        - id: String
+        - label: String
+        - controlType: String
+        - dataType: String
+        - required: boolean
+        - options: List<String>
+        + getters/setters()
+    }
+}
+
+package "factory" {
+    class FieldComponentFactory {
+        + create(field: FormField): FieldComponentBinding
+    }
+}
+
+package "validation" {
+    interface FieldValidator {
+        + validate(field: FormField, value: Object): String
+    }
+
+    class DefaultFieldValidator {
+        + validate(field: FormField, value: Object): String
+    }
+}
+
+package "service" {
+    class FormJsonService {
+        + loadDefinition(path: Path): FormDefinition
+    }
+
+    class ResultJsonService {
+        + saveResult(path: Path, formTitle: String, values: Map<String, Object>): void
+        + loadResult(path: Path): Map<String, Object>
+    }
+}
+
+package "ui" {
+    class DynamicFormFrame {
+        - titleLabel: JLabel
+        - formPanel: JPanel
+        - bindings: List<FieldComponentBinding>
+        - currentDefinition: FormDefinition
+        + DynamicFormFrame()
+        - loadDefinition(): void
+        - renderForm(definition: FormDefinition): void
+        - saveResult(): void
+        - loadResult(): void
+    }
+
+    class FieldComponentBinding {
+        - field: FormField
+        - component: JComponent
+        + getField(): FormField
+        + getComponent(): JComponent
+        + getRawValue(): Object
+        + getConvertedValue(): Object
+        + applyLoadedValue(valuesByLabel: Map<String, Object>): void
+    }
+}
+
+class Main {
+    + main(args: String[]): void
+}
+
+FieldValidator <|.. DefaultFieldValidator
+FieldComponentFactory ..> FieldComponentBinding : creates
+FieldComponentBinding --> FormField
+FieldComponentFactory ..> FormField
+FormDefinition "1" o-- "0..*" FormField
+DynamicFormFrame --> FormJsonService
+DynamicFormFrame --> ResultJsonService
+DynamicFormFrame --> FieldValidator
+DynamicFormFrame --> FieldComponentFactory
+DynamicFormFrame o-- "0..*" FieldComponentBinding
+FormJsonService ..> FormDefinition
+ResultJsonService ..> FormField : values by label
+Main ..> DynamicFormFrame
+
+note right of FormDefinition
+    JSON form definition:
+    formTitle, fields
+end note
+
+note right of ResultJsonService
+    Result JSON:
+    formTitle, submittedAt, values
+end note
+@enduml
