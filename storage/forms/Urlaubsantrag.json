@@ -1,0 +1,61 @@
+{
+    "formTitle": "Urlaubsantrag",
+    "fields": [
+        {
+            "id": "employeeName",
+            "label": "Mitarbeitername",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "department",
+            "label": "Abteilung",
+            "controlType": "dropdown",
+            "dataType": "enum",
+            "required": true,
+            "options": [
+                "IT",
+                "Vertrieb",
+                "Marketing",
+                "Personal",
+                "Buchhaltung"
+            ]
+        },
+        {
+            "id": "vacationStart",
+            "label": "Urlaubsbeginn",
+            "controlType": "datefield",
+            "dataType": "date",
+            "required": true
+        },
+        {
+            "id": "vacationEnd",
+            "label": "Urlaubsende",
+            "controlType": "datefield",
+            "dataType": "date",
+            "required": true
+        },
+        {
+            "id": "daysCount",
+            "label": "Anzahl der Urlaubstage",
+            "controlType": "spinner",
+            "dataType": "int",
+            "required": true
+        },
+        {
+            "id": "replacementAvailable",
+            "label": "Vertretung organisiert",
+            "controlType": "checkbox",
+            "dataType": "boolean",
+            "required": false
+        },
+        {
+            "id": "comment",
+            "label": "Bemerkung",
+            "controlType": "textarea",
+            "dataType": "string",
+            "required": false
+        }
+    ]
+}

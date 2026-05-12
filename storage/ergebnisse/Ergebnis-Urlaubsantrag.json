@@ -1,0 +1,13 @@
+{
+  "formTitle": "Urlaubsantrag",
+  "submittedAt": "2026-05-12",
+  "values": {
+    "Mitarbeitername": "Max Musterman",
+    "Abteilung": "IT",
+    "Urlaubsbeginn": "2026-06-01",
+    "Urlaubsende": "2029-06-21",
+    "Anzahl der Urlaubstage": 20,
+    "Vertretung organisiert": true,
+    "Bemerkung": "Gehen Sie zur IT-Abteilung"
+  }
+}

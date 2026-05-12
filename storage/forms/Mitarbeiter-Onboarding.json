@@ -1,0 +1,124 @@
+{
+    "formTitle": "Mitarbeiter-Onboarding",
+    "fields": [
+        {
+            "id": "firstName",
+            "label": "Vorname",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "lastName",
+            "label": "Nachname",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "employeeId",
+            "label": "Mitarbeiter-ID",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "department",
+            "label": "Abteilung",
+            "controlType": "dropdown",
+            "dataType": "enum",
+            "required": true,
+            "options": [
+                "IT",
+                "Personal",
+                "Marketing",
+                "Vertrieb",
+                "Finanzen",
+                "Support"
+            ]
+        },
+        {
+            "id": "position",
+            "label": "Position",
+            "controlType": "textfield",
+            "dataType": "string",
+            "required": true
+        },
+        {
+            "id": "employmentType",
+            "label": "Beschäftigungsart",
+            "controlType": "dropdown",
+            "dataType": "enum",
+            "required": true,
+            "options": [
+                "Vollzeit",
+                "Teilzeit",
+                "Werkstudent",
+                "Praktikum",
+                "Befristet"
+            ]
+        },
+        {
+            "id": "startDate",
+            "label": "Startdatum",
+            "controlType": "datefield",
+            "dataType": "date",
+            "required": true
+        },
+        {
+            "id": "salary",
+            "label": "Monatsgehalt",
+            "controlType": "textfield",
+            "dataType": "double",
+            "required": true
+        },
+        {
+            "id": "vacationDays",
+            "label": "Urlaubstage pro Jahr",
+            "controlType": "spinner",
+            "dataType": "int",
+            "required": true
+        },
+        {
+            "id": "remoteWork",
+            "label": "Remote-Arbeit möglich",
+            "controlType": "checkbox",
+            "dataType": "boolean",
+            "required": false
+        },
+        {
+            "id": "hardwarePackage",
+            "label": "Hardware-Paket",
+            "controlType": "dropdown",
+            "dataType": "enum",
+            "required": true,
+            "options": [
+                "Standard Laptop",
+                "Developer Laptop",
+                "MacBook",
+                "Desktop-PC"
+            ]
+        },
+        {
+            "id": "accessRights",
+            "label": "Zusätzliche Zugriffsrechte erforderlich",
+            "controlType": "checkbox",
+            "dataType": "boolean",
+            "required": false
+        },
+        {
+            "id": "mentorAssigned",
+            "label": "Mentor zugewiesen",
+            "controlType": "checkbox",
+            "dataType": "boolean",
+            "required": false
+        },
+        {
+            "id": "notes",
+            "label": "Bemerkungen",
+            "controlType": "textarea",
+            "dataType": "string",
+            "required": false
+        }
+    ]
+}

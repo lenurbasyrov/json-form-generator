@@ -1,0 +1,20 @@
+{
+  "formTitle": "Mitarbeiter-Onboarding",
+  "submittedAt": "2026-05-12",
+  "values": {
+    "Vorname": "Anna",
+    "Nachname": "Bell",
+    "Mitarbeiter-ID": "7",
+    "Abteilung": "Marketing",
+    "Position": "Marketingleiterin",
+    "Beschäftigungsart": "Vollzeit",
+    "Startdatum": "1991-01-01",
+    "Monatsgehalt": 3456.78,
+    "Urlaubstage pro Jahr": 25,
+    "Remote-Arbeit möglich": false,
+    "Hardware-Paket": "MacBook",
+    "Zusätzliche Zugriffsrechte erforderlich": true,
+    "Mentor zugewiesen": false,
+    "Bemerkungen": "Super Arbeiterin"
+  }
+}
