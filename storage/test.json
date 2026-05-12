@@ -1,12 +1,12 @@
 {
   "formTitle": "Kunden-Feedback",
-  "submittedAt": "2026-05-07T12:30:00",
+  "submittedAt": "2026-05-12",
   "values": {
-    "Name": "Lenur Basyrov",
-    "Alter": 25,
-    "Kategorie": "Support",
+    "Name": "Max Musterman",
+    "Alter": 30,
+    "Kategorie": "Allgemein",
     "Newsletter": true,
-    "Geburtsdatum": "2000-01-15",
-    "Kommentar": "Alles funktioniert."
+    "Geburtsdatum": "1996-11-11",
+    "Kommentar": "Test komment!"
   }
 }
